@@ -31,6 +31,11 @@
   [self setChecks];
 }
 
+- (void)restart:(id)sender
+{
+    [myController scheduleRestart:2];
+}
+
 - (void)setChecks
 {
   if ([myController getClickMode]) {
@@ -78,7 +83,9 @@
   
   // Add Separator
   [menu addItem:[NSMenuItem separatorItem]];
-  
+    
+    restartItem = [menu addItemWithTitle:@"Restart" action:@selector(restart:) keyEquivalent:@"r"];
+    [restartItem setTarget:self];
   // Add Quit Action
   menuItem = [menu addItemWithTitle:@"Quit"
                              action:@selector(actionQuit:)
